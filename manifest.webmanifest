@@ -7,8 +7,8 @@
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#12151a",
-  "theme_color": "#12151a",
+  "background_color": "#03100f",
+  "theme_color": "#03100f",
   "categories": [
     "graphics",
     "utilities",
@@ -47,6 +47,12 @@
         ],
         "image/webp": [
           ".webp"
+        ],
+        "application/zip": [
+          ".zip",
+          ".jar",
+          ".mcpack",
+          ".mcaddon"
         ]
       }
     }

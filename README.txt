@@ -1,21 +1,15 @@
-AV Studios: Texture Pack Editor - APK guide
+AV Studios: Texture Pack Editor v2.0
 
-1) HOST THE FOLDER (free, needs https)
-   - GitHub Pages: make a repo, upload all files in this folder to it, Settings > Pages > deploy from main branch.
-   - or Netlify / Cloudflare Pages: upload this folder.
-   You get a link like https://yourname.github.io/texture-editor/
+UPDATE THE SITE (GitHub)
+1) Open github.com/anshu5mobile/texture-editor/upload/main
+2) Choose these files (they replace the old ones with the same name):
+   index.html, manifest.webmanifest, sw.js, icon-192.png, icon-512.png, icon-maskable-512.png
+3) Commit changes. Wait 2-3 minutes.
+   The installed app loads from this site, so new features reach the app after you open it twice.
 
-2) OPEN pwabuilder.com on your phone, paste the link, tap Start.
-   It should show a manifest, service worker and icons as passing.
-   Tap "Package for stores" > Android > Generate. Download the zip, it contains the APK.
-
-3) PERMISSIONS
-   The app needs none. Opening images uses Android's own file picker, and saving uses a normal download.
-   Do not add storage permissions in PWABuilder: they are not needed and can cause rejections.
-   When PWABuilder asks for notifications / location, leave them off.
-
-4) SIGNING
-   Installing on your own phone works with the debug/test APK. A Play Store upload needs the signing key PWABuilder gives you.
+NEW ICON / NAME IN THE APK
+The icon is built into the APK, so it needs one new APK build:
+pwabuilder.com > your link > Package for stores > Android > Generate.
 
 Contact / bugs / feature requests: https://discord.gg/MJVwemmaTf
 Made by AV Studios and ItsAnshuXD

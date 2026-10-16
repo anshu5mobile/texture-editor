@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#12151a">
+<meta name="theme-color" content="#03100f">
 <meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Texture Editor">
 <meta name="description" content="AV Studios: Texture Pack Editor - a pixel editor for texture packs.">
@@ -46,6 +46,7 @@ input[type=range]{accent-color:var(--accent);width:100%;min-width:0}
 .top{display:flex;align-items:center;gap:6px;padding-top:8px;min-width:0}
 button.brand{background:none;border:none;padding:0;min-height:38px;color:inherit;text-align:left}
 .bt small{display:block;font-family:var(--f-body);font-weight:400;font-size:10px;letter-spacing:.04em;color:var(--muted);margin-top:-2px}
+.blogo{width:36px;height:36px;border-radius:9px;margin-right:8px;flex:none}
 .btnlink{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 14px;border-radius:8px;background:var(--accent);color:var(--accent-ink);font-weight:700;text-decoration:none}
 .brand{font-family:var(--f-display);font-weight:700;font-size:18px;letter-spacing:.02em;display:flex;align-items:center;margin-right:4px;white-space:nowrap}
 .brand i{width:14px;height:14px;background:var(--accent);box-shadow:5px 5px 0 var(--warn);display:inline-block;margin-right:7px;flex:none}
@@ -116,12 +117,14 @@ h3:first-child{margin-top:0}
   .panel{height:auto!important;margin-bottom:8px}
   .tools{margin-bottom:8px}.stage{margin-bottom:8px}
 }
+textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;color:inherit;font:12px/1.5 ui-monospace,Menlo,monospace;resize:vertical}
+.file em{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 @media (max-width:560px){.bt{display:none}.brand{margin-right:0}#docDim{display:none}.top{gap:4px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 
 <header class="top">
-  <button class="brand" id="bAbout" aria-label="About AV Studios" title="About"><i></i><span class="bt">AV Studios<small>Texture Pack Editor</small></span></button>
+  <button class="brand" id="bAbout" aria-label="About AV Studios" title="About"><img class="blogo" src="data:image/png;base64,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" alt=""><span class="bt">AV Studios<small>Texture Pack Editor</small></span></button>
   <div class="fname"><b id="docName">untitled.png</b><span id="docDim"></span><span class="dot" id="dirty" hidden title="Unsaved changes"></span></div>
   <button id="bUndo" title="Undo" aria-label="Undo">&#8630;</button>
   <button id="bRedo" title="Redo" aria-label="Redo">&#8631;</button>
@@ -133,12 +136,13 @@ h3:first-child{margin-top:0}
   <div class="opt"><label for="oSize">Size</label><input type="range" id="oSize" min="1" max="16" value="1"><output id="oSizeV">1</output></div>
   <div class="opt"><label for="oMode">Brush</label>
     <select id="oMode"><option value="solid">Solid</option><option value="dither">Dither</option><option value="noise">Noise</option></select></div>
+  <div class="opt"><label for="oShape">Shape</label><select id="oShape"><option value="sq">Square</option><option value="rd">Round</option></select></div>
   <div class="opt" id="optShade" hidden><label for="oShade">Shade</label>
     <select id="oShade"><option value="1">Lighten</option><option value="-1">Darken</option></select></div>
   <div class="opt" id="optFill" hidden><label for="oTol">Tolerance</label><input type="range" id="oTol" min="0" max="128" value="0"><output id="oTolV">0</output>
     <button id="oGlobal">Global</button></div>
   <div class="opt" id="optShape" hidden><button id="oFilled">Filled</button></div>
-  <div class="opt"><button id="oMX" title="Mirror left-right">Mirror X</button><button id="oMY" title="Mirror top-bottom">Mirror Y</button><button id="oTile" title="Wrap strokes around edges">Wrap</button><button id="oGrid" class="on">Grid</button></div>
+  <div class="opt"><button id="oMX" title="Mirror left-right">Mirror X</button><button id="oMY" title="Mirror top-bottom">Mirror Y</button><button id="oTile" title="Wrap strokes around edges">Wrap</button><button id="oGrid" class="on">Grid</button><button id="oTileV" title="Show the texture repeating around itself">Tile view</button><button id="oCmp" title="Hold to see the last saved version">Compare</button></div>
   <div class="opt" id="optSel" hidden><button id="sCopy">Copy</button><button id="sCut">Cut</button><button id="sPaste">Paste</button><button id="sDel">Delete</button><button id="sFlip">Flip</button><button id="sAll">All</button></div>
 </div>
 
@@ -151,14 +155,14 @@ h3:first-child{margin-top:0}
   </section>
   <aside class="panel" id="panel">
     <div class="tabs" id="tabs">
-      <button data-p="color" class="on">Color</button><button data-p="files">Textures</button><button data-p="fx">Effects</button><button data-p="prev">Preview</button><button data-p="more">Export</button>
+      <button data-p="color" class="on">Color</button><button data-p="files">Textures</button><button data-p="packs">Packs</button><button data-p="fx">Effects</button><button data-p="prev">Preview</button><button data-p="more">Export</button>
     </div>
     <div class="pane on" id="p-color">
       <div class="row">
         <div class="cur"><b id="curSw"></b></div>
         <input type="text" id="hex" value="#7bc043" maxlength="9" style="width:110px" aria-label="Hex color">
         <button id="addPal">+ Palette</button>
-        <button id="fromImg">From image</button>
+        <button id="fromImg">From image</button><button id="palTxt">Palette text</button>
       </div>
       <div class="sv" id="svBox"><canvas id="svCv" width="170" height="75"></canvas><i id="svDot"></i></div>
       <div class="fx" style="margin-top:10px"><label for="hue">Hue</label><input type="range" id="hue" min="0" max="359" value="100"><output id="hueV">100</output>
@@ -169,15 +173,22 @@ h3:first-child{margin-top:0}
     </div>
     <div class="pane" id="p-files">
       <div class="row">
-        <button id="fOpen" class="primary">Open images</button>
+        <button id="fOpen" class="primary">Open files</button><button id="fGal">Gallery</button>
         <button id="fNew">New texture</button>
         <button id="fDup">Duplicate</button>
         <button id="fRen">Rename</button>
         <button id="fDel">Close</button>
       </div>
-      <input type="file" id="fileIn" accept="image/*" multiple hidden>
+      <input type="file" id="fileIn" accept="*/*" multiple hidden><input type="file" id="fileImg" accept="image/*" multiple hidden>
       <div class="files" id="fileList"></div>
-      <p class="hint">Open as many textures as you want and switch between them here. Drag and drop images onto the canvas also works.</p>
+      <p class="hint"><b>Open files</b> uses your Files app: pick PNG, JPG or WebP textures, or a whole texture pack (.zip, .jar, .mcpack). <b>Gallery</b> picks from your photos. Textures from a pack open in the Packs tab and are saved back into the same pack.</p>
+    </div>
+    <div class="pane" id="p-packs">
+      <div class="row"><button id="pkOpen" class="primary">Open pack</button><select id="pkSel" aria-label="Open packs" style="flex:1"></select><button id="pkSave">Save pack</button><button id="pkClose">Close</button></div>
+      <div class="row"><input type="text" id="pkSearch" placeholder="Search textures (grass, stone...)" style="flex:1" aria-label="Search textures"><select id="pkDir" aria-label="Folder" style="max-width:48%"></select></div>
+      <p class="hint" id="pkInfo"></p>
+      <div class="files" id="pkList"></div>
+      <div class="row" style="margin-top:10px"><button id="pkMore" hidden>Show more</button></div>
     </div>
     <div class="pane" id="p-fx">
       <h3>Adjust</h3>
@@ -190,7 +201,7 @@ h3:first-child{margin-top:0}
       <div class="btns">
         <button data-fx="flipH">Flip H</button><button data-fx="flipV">Flip V</button><button data-fx="rotR">Rotate 90</button><button data-fx="rotL">Rotate -90</button>
         <button data-fx="invert">Invert</button><button data-fx="gray">Grayscale</button><button data-fx="outline">Outline</button><button data-fx="noise">Add noise</button>
-        <button data-fx="seam">Seamless blend</button><button data-fx="clear">Clear all</button>
+        <button data-fx="seam">Seamless blend</button><button data-fx="bevel">Bevel</button><button data-fx="border">Dark border</button><button data-fx="poster">Posterize</button><button data-fx="tint">Tint</button><button data-fx="clear">Clear all</button>
       </div>
       <h3>Canvas size</h3>
       <div class="row"><input type="number" id="rsW" min="1" max="512" value="16" style="width:76px" aria-label="Width"><span>x</span><input type="number" id="rsH" min="1" max="512" value="16" style="width:76px" aria-label="Height">
@@ -204,7 +215,7 @@ h3:first-child{margin-top:0}
     </div>
     <div class="pane" id="p-more">
       <h3>Save</h3>
-      <p class="hint"><b>Save</b> replaces the current texture with your edits and downloads it with its original file name. <b>Save copy</b> keeps the original and makes a new file.</p>
+      <p class="hint"><b>Save</b> writes your edits back: into the same pack if the texture came from a pack, otherwise over the same file where your browser allows it, or as a download with the same name. <b>Save copy</b> keeps the original and makes a new file.</p>
       <div class="btns"><button id="mSave" class="primary">Save</button><button id="mSaveAs">Save as copy</button><button id="mAll">Save all (.zip)</button></div>
       <h3>Pack</h3>
       <div class="row"><label for="packName">Pack name</label><input type="text" id="packName" value="My Texture Pack" style="flex:1"></div>
@@ -268,7 +279,7 @@ function plotPx(x,y,c,blend){
   sym(x,y,(a,b)=>put(a,b,cc,blend))}
 function shadePx(x,y){sym(x,y,(a,b)=>{const k=idxOf(a,b);if(k<0)return;const p=S.cur.img.data,i=k*4;if(!p[i+3])return;
   for(let j=0;j<3;j++)p[i+j]=S.shade>0?p[i+j]+(255-p[i+j])*.16:p[i+j]*.84})}
-function stamp(x,y,fn){const n=S.size,o=Math.floor((n-1)/2);for(let j=0;j<n;j++)for(let i=0;i<n;i++)fn(x-o+i,y-o+j)}
+function stamp(x,y,fn){const n=S.size,o=Math.floor((n-1)/2),c=(n-1)/2;for(let j=0;j<n;j++)for(let i=0;i<n;i++){if(S.round&&n>2){const dx=i-c,dy=j-c;if(dx*dx+dy*dy>(n/2)*(n/2)-.5)continue}fn(x-o+i,y-o+j)}}
 function line(x0,y0,x1,y1,fn){const dx=Math.abs(x1-x0),dy=-Math.abs(y1-y0),sx=x0<x1?1:-1,sy=y0<y1?1:-1;let e=dx+dy;
   for(;;){fn(x0,y0);if(x0===x1&&y0===y1)break;const e2=2*e;if(e2>=dy){e+=dy;x0+=sx}if(e2<=dx){e+=dx;y0+=sy}}}
 function strokeAt(x,y){const t=S.tool;
@@ -309,9 +320,10 @@ function dashRect(x,y,w,h){vctx.save();vctx.lineWidth=1;vctx.strokeStyle='#000';
   vctx.strokeStyle='#fff';vctx.setLineDash([5,5]);vctx.lineDashOffset=(Date.now()/60)%10;vctx.strokeRect(x+.5,y+.5,w,h);vctx.restore()}
 let animSel=0;
 function draw(){const d=S.cur;vctx.setTransform(dpr,0,0,dpr,0,0);vctx.clearRect(0,0,VW,VH);if(!d)return;
-  const z=S.z,ox=S.ox,oy=S.oy,W=d.w*z,H=d.h*z;
+  const z=S.z,ox=S.ox,oy=S.oy,W=d.w*z,H=d.h*z,src=(S.compare&&d.cmp)?d.cmp:d.cv;
+  if(S.tileV){vctx.save();vctx.imageSmoothingEnabled=false;vctx.globalAlpha=.5;for(let j=-1;j<=1;j++)for(let i=-1;i<=1;i++){if(i||j)vctx.drawImage(src,ox+i*W,oy+j*H,W,H)}vctx.restore()}
   vctx.save();vctx.beginPath();vctx.rect(ox,oy,W,H);vctx.clip();vctx.fillStyle=chk();vctx.fillRect(ox,oy,W,H);
-  vctx.imageSmoothingEnabled=false;vctx.drawImage(d.cv,ox,oy,W,H);
+  vctx.imageSmoothingEnabled=false;vctx.drawImage(src,ox,oy,W,H);
   if(S.float)vctx.drawImage(S.float.cv,ox+S.float.x*z,oy+S.float.y*z,S.float.cv.width*z,S.float.cv.height*z);
   if(S.grid&&z>=6){vctx.strokeStyle=S.gridCol;vctx.lineWidth=1;vctx.beginPath();
     for(let x=1;x<d.w;x++){const X=Math.round(ox+x*z)+.5;vctx.moveTo(X,oy);vctx.lineTo(X,oy+H)}
@@ -394,7 +406,7 @@ view.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button===2
   try{view.setPointerCapture(e.pointerId)}catch(_){}
   const p=rel(e);ptrs.set(e.pointerId,p);
   if(ptrs.size===2){cancelDrag();const[a,b]=[...ptrs.values()];gest={d:Math.hypot(a.x-b.x,a.y-b.y)||1,z:S.z,mx:(a.x+b.x)/2,my:(a.y+b.y)/2,ox:S.ox,oy:S.oy};return}
-  if(ptrs.size>2||!S.cur)return;
+  if(ptrs.size>2||!S.cur||S.compare)return;
   if(e.button===1||e.button===2||S.tool==='pan'||spaceDown){drag={kind:'pan',sx:p.x,sy:p.y,ox:S.ox,oy:S.oy};return}
   beginTool(toDoc(p))});
 view.addEventListener('pointermove',e=>{const p=rel(e);if(ptrs.has(e.pointerId))ptrs.set(e.pointerId,p);
@@ -495,19 +507,19 @@ function renderFiles(){const box=$('#fileList');box.innerHTML='';
   S.docs.forEach(d=>{const el=document.createElement('div');el.className='file'+(d===S.cur?' on':'');
     const c=document.createElement('canvas');c.width=64;c.height=64;const x=c.getContext('2d');x.imageSmoothingEnabled=false;
     const k=Math.min(64/d.w,64/d.h);x.drawImage(d.cv,(64-d.w*k)/2,(64-d.h*k)/2,d.w*k,d.h*k);
-    el.appendChild(c);el.insertAdjacentHTML('beforeend',`<span>${esc(d.name)}${d.dirty?' *':''}</span><em>${d.w}x${d.h}</em>`);
+    el.appendChild(c);el.insertAdjacentHTML('beforeend',`<span>${esc(d.name)}${d.dirty?' *':''}</span><em>${d.w}x${d.h}${d.pack?' | pack':''}</em>`);
     el.onclick=()=>switchDoc(d);box.appendChild(el)})}
 function switchDoc(d){if(d===S.cur)return;fxPending();if(S.cur){commitFloat()}S.sel=null;S.float=null;S.cur=d;S.fitted=true;fit();updBar();refresh();
-  $('#rsW').value=d.w;$('#rsH').value=d.h;try{localStorage.setItem('tf.cur',d.id)}catch(_){}}
+  $('#rsW').value=d.w;$('#rsH').value=d.h;try{localStorage.setItem('tf.cur',d.id)}catch(_){}
+  if($('#p-packs').classList.contains('on'))renderPackUI()}
 function addDoc(d,go){S.docs.push(d);d.saved=cp(d.img);if(go!==false)switchDoc(d);else updBar();schedSave(d)}
-async function openFiles(files){let n=0;
+async function openFilesOld(files){let n=0;
   for(const f of files){if(!f.type.startsWith('image/'))continue;
     try{const bm=await createImageBitmap(f);if(bm.width>1024||bm.height>1024){toast(f.name+' is larger than 1024px and was skipped');continue}
       const c=document.createElement('canvas');c.width=bm.width;c.height=bm.height;const x=c.getContext('2d');x.drawImage(bm,0,0);
       addDoc(mkDoc(pngName(f.name),0,0,x.getImageData(0,0,bm.width,bm.height)));n++}catch(_){toast('Could not read '+f.name)}}
   if(n)toast(n+' texture'+(n>1?'s':'')+' opened')}
-$('#fOpen').onclick=()=>$('#fileIn').click();
-$('#fileIn').onchange=e=>{openFiles(e.target.files);e.target.value=''};
+
 $('#fNew').onclick=()=>modal('New texture',
   `<label class="hint" for="nName">File name</label><input type="text" id="nName" value="new_texture.png">
    <label class="hint" for="nSize">Size (pixels)</label><select id="nSize"><option>16</option><option>32</option><option>64</option><option>128</option><option>256</option></select>
@@ -587,15 +599,12 @@ function drawPrev(){const d=S.cur;if(!d||!$('#p-prev').classList.contains('on'))
 function toBlob(img){const c=document.createElement('canvas');c.width=img.width;c.height=img.height;c.getContext('2d').putImageData(img,0,0);return new Promise(r=>c.toBlob(r,'image/png'))}
 let DL;async function getDL(){if(DL!==undefined)return DL;try{DL=window.claude&&window.claude.use?await window.claude.use('downloads'):null}catch(_){DL=null}return DL}
 async function deliver(blob,name){const dl=await getDL();
-  if(dl){try{await dl.save({filename:name,data:blob});return true}catch(e){if(e&&e.code==='declined')return false}}
+  if(dl){try{await dl.save({filename:dlName(name),data:blob});return true}catch(e){if(e&&e.code==='declined')return false}}
   if(!(window.claude&&window.claude.use)){try{const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);return true}catch(_){}}
   const url=URL.createObjectURL(blob);
   if(blob.type==='image/png')modal('Save '+esc(name),`<img src="${url}" alt="${esc(name)}"><p class="hint">Downloads are blocked in this view. Touch and hold the image, then choose Save image.</p>`);
   else modal('Download blocked','<p class="hint">This view cannot download zip files. Open the app in a browser tab that allows downloads, or save textures one by one.</p>');
   return true}
-async function saveDoc(){const d=S.cur;if(!d)return;fxPending();commitFloat();refresh();d.name=pngName(d.name);
-  const ok=await deliver(await toBlob(d.img),d.name);d.saved=cp(d.img);d.dirty=false;updBar();schedSave(d);
-  toast(ok?'Saved '+d.name:'Saved in project. Download skipped.')}
 function saveAs(){const d=S.cur;if(!d)return;fxPending();commitFloat();
   modal('Save as copy',`<p class="hint">Your edits go into the new file. ${esc(d.name)} goes back to how it was last saved.</p><input type="text" id="saName" value="${esc(baseName(d.name)+'_copy.png')}">`,
   [{label:'Cancel'},{label:'Save copy',cls:'primary',fn:async()=>{closeModal();
@@ -623,13 +632,13 @@ async function saveAll(){fxPending();commitFloat();refresh();const dir=$('#packD
   if($('#packMeta').checked)files.unshift({name:'pack.mcmeta',data:enc.encode(JSON.stringify({pack:{pack_format:+$('#packFmt').value||34,description:pack}},null,2))});
   const ok=await deliver(zip(files),pack.replace(/[\\/:*?"<>|]+/g,'_')+'.zip');
   S.docs.forEach(d=>{d.saved=cp(d.img);d.dirty=false;schedSave(d)});updBar();toast(ok?'Saved '+files.length+' files':'Download skipped')}
-['#bSave','#mSave'].forEach(i=>$(i).onclick=saveDoc);['#bSaveAs','#mSaveAs'].forEach(i=>$(i).onclick=saveAs);$('#mAll').onclick=saveAll;
+['#bSaveAs','#mSaveAs'].forEach(i=>$(i).onclick=saveAs);$('#mAll').onclick=saveAll;
 
 /* ---------- project storage (IndexedDB, best effort) ---------- */
 let idb=null,saveT=0;
-function openDB(){return new Promise(res=>{try{const r=indexedDB.open('texelforge',1);r.onupgradeneeded=()=>r.result.createObjectStore('docs',{keyPath:'id'});
+function openDB(){return new Promise(res=>{try{const r=indexedDB.open('texelforge',2);r.onupgradeneeded=()=>{const db=r.result;if(!db.objectStoreNames.contains('docs'))db.createObjectStore('docs',{keyPath:'id'});if(!db.objectStoreNames.contains('packs'))db.createObjectStore('packs',{keyPath:'id'})};
   r.onsuccess=()=>{idb=r.result;res(idb)};r.onerror=()=>res(null)}catch(_){res(null)}})}
-function dbPut(d){if(!idb||!d)return;try{idb.transaction('docs','readwrite').objectStore('docs').put({id:d.id,name:d.name,w:d.img.width,h:d.img.height,buf:d.img.data.buffer.slice(0),dirty:d.dirty,
+function dbPut(d){if(!idb||!d)return;try{idb.transaction('docs','readwrite').objectStore('docs').put({id:d.id,packId:d.pack?d.pack.id:0,entry:d.entry||'',name:d.name,w:d.img.width,h:d.img.height,buf:d.img.data.buffer.slice(0),dirty:d.dirty,
   sw:d.saved?d.saved.width:0,sh:d.saved?d.saved.height:0,sbuf:d.saved?d.saved.data.buffer.slice(0):null})}catch(_){}}
 function dbDel(id){if(!idb)return;try{idb.transaction('docs','readwrite').objectStore('docs').delete(id)}catch(_){}}
 function dbAll(){return new Promise(res=>{if(!idb)return res([]);try{const q=idb.transaction('docs').objectStore('docs').getAll();q.onsuccess=()=>res(q.result||[]);q.onerror=()=>res([])}catch(_){res([])}})}
@@ -639,10 +648,10 @@ function schedSave(d){clearTimeout(saveT);saveT=setTimeout(()=>dbPut(d||S.cur),7
 $('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const id=b.dataset.p,was=b.classList.contains('on');
   $$('#tabs button').forEach(x=>x.classList.toggle('on',x===b));$$('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+id));
   if(innerWidth<900){const pn=$('#panel'),col=pn.dataset.col==='1',next=was?!col:false;pn.dataset.col=next?'1':'0';pn.style.setProperty('--ph',next?'46px':'')}
-  if(id==='files')renderFiles();queuePrev()});
+  if(id==='files')renderFiles();if(id==='packs')renderPackUI();queuePrev()});
 $('#thTheme').onclick=()=>{const r=document.documentElement,sysDark=matchMedia('(prefers-color-scheme: dark)').matches,cur=r.dataset.theme||(sysDark?'dark':'light'),nx=cur==='dark'?'light':'dark';
   r.dataset.theme=nx;try{localStorage.setItem('tf.theme',nx)}catch(_){}draw();queuePrev()};
-function about(){modal('AV Studios: Texture Pack Editor',`<p class="hint">Version 1.1<br>Made by <b>AV Studios</b> and <b>ItsAnshuXD</b>.</p><p class="hint">Found a bug, hit a problem or want a new feature? Join our Discord and tell us.</p><a class="btnlink" href="https://discord.gg/MJVwemmaTf" target="_blank" rel="noopener">Join our Discord</a>`,[{label:'Close'}])}
+function about(){modal('AV Studios: Texture Pack Editor',`<p class="hint">Version 2.0<br>Made by <b>AV Studios</b> and <b>ItsAnshuXD</b>.</p><p class="hint">Found a bug, hit a problem or want a new feature? Join our Discord and tell us.</p><a class="btnlink" href="https://discord.gg/MJVwemmaTf" target="_blank" rel="noopener">Join our Discord</a>`,[{label:'Close'}])}
 $('#bAbout').onclick=about;$('#mAbout').onclick=about;
 $('#bHelp').onclick=()=>modal('Shortcuts',`<p class="hint">B pencil, E eraser, G fill, I pick color, L line, R rectangle, O ellipse, M select, S shift wrap, D lighten/darken, H or Space pan.<br>
   [ and ] change brush size. + - zoom, 0 fit. Ctrl+Z undo, Ctrl+Shift+Z redo, Ctrl+S save. Ctrl+C / X / V copy, cut, paste in the select tool.<br>
@@ -659,6 +668,193 @@ addEventListener('keydown',e=>{const tg=e.target,tn=tg&&tg.tagName;if(tn==='SELE
   else if(KEYS[k])setTool(KEYS[k])});
 addEventListener('keyup',e=>{if(e.key===' ')spaceDown=false});
 
+
+/* ---------- v2: packs (zip), open router, extras ---------- */
+S.packs=[];S.curPack=null;S.round=false;S.tileV=false;S.compare=false;
+const td=new TextDecoder('utf-8');
+const u16=(u,o)=>u[o]|(u[o+1]<<8),u32=(u,o)=>(u[o]|(u[o+1]<<8)|(u[o+2]<<16)|(u[o+3]<<24))>>>0;
+const isPng=e=>/\.png$/i.test(e.name)&&!/(^|\/)__MACOSX\//.test(e.name);
+const pngs=p=>p.entries.filter(isPng);
+const pngBytes=async img=>new Uint8Array(await(await toBlob(img)).arrayBuffer());
+const writeHandle=async(h,blob)=>{const w=await h.createWritable();await w.write(blob);await w.close()};
+const OKX=['gif','png','jpg','jpeg','webp','mp4','webm','mov','txt','json','md','docx','pptx','epub','csv','ttf','html','svg','pdf','xlsx','zip'];
+function dlName(n){const m=/\.([a-z0-9]+)$/i.exec(n);return m&&OKX.includes(m[1].toLowerCase())?n:n.replace(/\.[a-z0-9]+$/i,'')+'.zip'}
+
+function parseZip(u){
+  let e=-1;const min=Math.max(0,u.length-22-65535);
+  for(let i=u.length-22;i>=min;i--){if(u[i]===0x50&&u[i+1]===0x4b&&u[i+2]===5&&u[i+3]===6){e=i;break}}
+  if(e<0)throw new Error('This is not a zip file');
+  const n=u16(u,e+10),cdo=u32(u,e+16);
+  if(n===0xffff||cdo===0xffffffff)throw new Error('Zip64 packs are too big for this app');
+  const out=[];let p=cdo;
+  for(let k=0;k<n;k++){
+    if(u32(u,p)!==0x02014b50)throw new Error('The zip is damaged');
+    const nl=u16(u,p+28),el=u16(u,p+30),cl=u16(u,p+32),nb=u.slice(p+46,p+46+nl);
+    out.push({nb,name:td.decode(nb),vmade:u16(u,p+4),vneed:u16(u,p+6),flags:u16(u,p+8),method:u16(u,p+10),time:u16(u,p+12),date:u16(u,p+14),
+      crc:u32(u,p+16),csize:u32(u,p+20),usize:u32(u,p+24),iattr:u16(u,p+36),eattr:u32(u,p+38),off:u32(u,p+42),cm:u.slice(p+46+nl+el,p+46+nl+el+cl),newData:null});
+    p+=46+nl+el+cl}
+  return out}
+async function readEntry(pack,e){
+  if(e.newData)return e.newData;
+  if(e.flags&1)throw new Error('Encrypted packs are not supported');
+  const u=pack.u8,o=e.off,ds=o+30+u16(u,o+26)+u16(u,o+28),raw=u.subarray(ds,ds+e.csize);
+  if(e.method===0)return raw;
+  if(e.method!==8)throw new Error('Unsupported zip compression');
+  if(typeof DecompressionStream==='undefined')throw new Error('Update Chrome to open compressed packs');
+  const s=new DecompressionStream('deflate-raw'),w=s.writable.getWriter();w.write(raw).catch(()=>{});w.close().catch(()=>{});
+  return new Uint8Array(await new Response(s.readable).arrayBuffer())}
+function buildZip(pack){
+  const parts=[],cd=[];let off=0;
+  for(const e of pack.entries){
+    if(e.flags&1)throw new Error('Encrypted packs are not supported');
+    let data,method,crc,cs,us;
+    if(e.newData){data=e.newData;method=0;crc=crc32(data);cs=us=data.length}
+    else{const u=pack.u8,o=e.off,ds=o+30+u16(u,o+26)+u16(u,o+28);data=u.subarray(ds,ds+e.csize);method=e.method;crc=e.crc;cs=e.csize;us=e.usize}
+    const fl=(e.flags&~8)&0xffff,vn=e.vneed||20;
+    const lh=new DataView(new ArrayBuffer(30));
+    lh.setUint32(0,0x04034b50,true);lh.setUint16(4,vn,true);lh.setUint16(6,fl,true);lh.setUint16(8,method,true);lh.setUint16(10,e.time,true);lh.setUint16(12,e.date,true);
+    lh.setUint32(14,crc,true);lh.setUint32(18,cs,true);lh.setUint32(22,us,true);lh.setUint16(26,e.nb.length,true);
+    parts.push(lh.buffer,e.nb,data);
+    const ch=new DataView(new ArrayBuffer(46));
+    ch.setUint32(0,0x02014b50,true);ch.setUint16(4,e.vmade,true);ch.setUint16(6,vn,true);ch.setUint16(8,fl,true);ch.setUint16(10,method,true);ch.setUint16(12,e.time,true);ch.setUint16(14,e.date,true);
+    ch.setUint32(16,crc,true);ch.setUint32(20,cs,true);ch.setUint32(24,us,true);ch.setUint16(28,e.nb.length,true);ch.setUint16(32,e.cm.length,true);
+    ch.setUint16(36,e.iattr,true);ch.setUint32(38,e.eattr,true);ch.setUint32(42,off,true);
+    cd.push(ch.buffer,e.nb,e.cm);
+    off+=30+e.nb.length+cs;if(off>0xf0000000)throw new Error('Pack is too big');
+  }
+  let cl=0;for(const x of cd)cl+=x.byteLength;
+  const end=new DataView(new ArrayBuffer(22));end.setUint32(0,0x06054b50,true);end.setUint16(8,pack.entries.length,true);end.setUint16(10,pack.entries.length,true);end.setUint32(12,cl,true);end.setUint32(16,off,true);
+  return new Blob([...parts,...cd,end.buffer],{type:'application/zip'})}
+
+/* pack storage */
+function dbPutPack(p){if(!idb)return;try{idb.transaction('packs','readwrite').objectStore('packs').put({id:p.id,name:p.name,buf:p.u8.buffer.slice(p.u8.byteOffset,p.u8.byteOffset+p.u8.byteLength)})}catch(_){}}
+function dbDelPack(id){if(!idb)return;try{idb.transaction('packs','readwrite').objectStore('packs').delete(id)}catch(_){}}
+function restorePacks(){return new Promise(res=>{if(!idb)return res();try{const q=idb.transaction('packs').objectStore('packs').getAll();
+  q.onsuccess=()=>{(q.result||[]).sort((a,b)=>a.id-b.id).forEach(r=>{try{const u8=new Uint8Array(r.buf);S.packs.push({id:r.id,name:r.name,u8,entries:parseZip(u8),handle:null,dir:'',q:'',shown:120});uid=Math.max(uid,r.id+1)}catch(_){}});S.curPack=S.packs[0]||null;res()};
+  q.onerror=()=>res()}catch(_){res()}})}
+
+/* open files: images and packs, from any picker */
+async function openPack(f,h){
+  toast('Reading '+f.name+'...');
+  let u8,entries;
+  try{u8=new Uint8Array(await f.arrayBuffer());entries=parseZip(u8)}catch(e){toast(e.message||'Could not read that pack');return}
+  const pack={id:uid++,name:f.name,u8,entries,handle:h||null,dir:'',q:'',shown:120};
+  S.packs.push(pack);S.curPack=pack;dbPutPack(pack);
+  const n=pngs(pack).length;toast(n?n+' textures found in '+f.name:'No PNG textures found in '+f.name);
+  showTab('packs');renderPackUI()}
+async function openFiles(list){let n=0;
+  for(const it of Array.from(list)){const f=Array.isArray(it)?it[0]:it,h=Array.isArray(it)?it[1]:null;
+    try{const hd=new Uint8Array(await f.slice(0,4).arrayBuffer());
+      if(hd[0]===0x50&&hd[1]===0x4b){await openPack(f,h);continue}
+      const bm=await createImageBitmap(f);
+      if(bm.width>2048||bm.height>2048){toast(f.name+' is larger than 2048px and was skipped');continue}
+      const c=document.createElement('canvas');c.width=bm.width;c.height=bm.height;c.getContext('2d').drawImage(bm,0,0);
+      const d=mkDoc(pngName(f.name),0,0,c.getContext('2d').getImageData(0,0,bm.width,bm.height));
+      if(h&&/\.png$/i.test(f.name))d.handle=h;
+      addDoc(d);n++}catch(_){toast('Could not read '+f.name+'. Use PNG, JPG, WebP or a zip pack.')}}
+  if(n)toast(n+' texture'+(n>1?'s':'')+' opened')}
+async function pickFiles(){
+  if(window.showOpenFilePicker){
+    try{const hs=await window.showOpenFilePicker({multiple:true,types:[{description:'Textures and packs',accept:{'image/png':['.png'],'image/jpeg':['.jpg','.jpeg'],'image/webp':['.webp'],'application/zip':['.zip','.jar','.mcpack','.mcaddon']}}]});
+      const out=[];for(const h of hs)out.push([await h.getFile(),h]);openFiles(out);return}
+    catch(e){if(e&&e.name==='AbortError')return}}
+  $('#fileIn').click()}
+$('#fOpen').onclick=pickFiles;$('#pkOpen').onclick=pickFiles;
+$('#fileIn').onchange=e=>{openFiles(e.target.files);e.target.value=''};
+$('#fGal').onclick=()=>$('#fileImg').click();
+$('#fileImg').onchange=e=>{openFiles(e.target.files);e.target.value=''};
+
+/* packs tab */
+function showTab(id){const b=$('#tabs [data-p="'+id+'"]');if(b&&!b.classList.contains('on'))b.click();else{const pn=$('#panel');if(pn.dataset.col==='1'){pn.dataset.col='0';pn.style.setProperty('--ph','')}}}
+const shortDir=d=>d.split('/').slice(-2).join('/')||'/';
+const thumbObs=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){thumbObs.unobserve(en.target);drawThumb(en.target)}})},{rootMargin:'120px'});
+async function drawThumb(card){const p=S.curPack,e=p&&p.entries[+card.dataset.i];if(!e)return;
+  try{const bm=await createImageBitmap(new Blob([await readEntry(p,e)],{type:'image/png'}));const c=card.querySelector('canvas'),x=c.getContext('2d');
+    x.imageSmoothingEnabled=false;const k=Math.min(64/bm.width,64/bm.height);x.drawImage(bm,(64-bm.width*k)/2,(64-bm.height*k)/2,bm.width*k,bm.height*k);if(bm.close)bm.close()}catch(_){}}
+function renderPackUI(){
+  const sel=$('#pkSel');sel.innerHTML=S.packs.map(p=>`<option value="${p.id}"${p===S.curPack?' selected':''}>${esc(p.name)}</option>`).join('');
+  const has=!!S.curPack;['#pkSel','#pkSave','#pkClose','#pkSearch','#pkDir'].forEach(i=>$(i).disabled=!has);
+  const list=$('#pkList');list.innerHTML='';
+  if(!has){$('#pkInfo').textContent='Open a texture pack (.zip, .jar or .mcpack) to browse and edit the textures inside it. When you press Save, the edited texture is written back into the same pack.';$('#pkMore').hidden=true;return}
+  const p=S.curPack,all=pngs(p),dirs=new Map();
+  all.forEach(e=>{const d=e.name.replace(/\/?[^\/]*$/,'');dirs.set(d,(dirs.get(d)||0)+1)});
+  const ds=$('#pkDir');if(ds.dataset.pack!==String(p.id)||ds.dataset.n!==String(all.length)){
+    ds.innerHTML='<option value="">All folders ('+all.length+')</option>'+[...dirs.entries()].sort().map(([d,n])=>`<option value="${esc(d)}">${esc(shortDir(d))} (${n})</option>`).join('');
+    ds.dataset.pack=p.id;ds.dataset.n=all.length;ds.value=p.dir||''}
+  if(document.activeElement!==$('#pkSearch'))$('#pkSearch').value=p.q||'';
+  const q=(p.q||'').trim().toLowerCase(),rows=[];
+  p.entries.forEach((e,i)=>{if(!isPng(e))return;if(p.dir&&e.name.replace(/\/?[^\/]*$/,'')!==p.dir)return;if(q&&!e.name.toLowerCase().includes(q))return;rows.push(i)});
+  const edited=p.entries.filter(e=>e.newData).length+S.docs.filter(d=>d.pack===p&&d.dirty).length;
+  $('#pkInfo').textContent=rows.length+' of '+all.length+' textures'+(edited?' | '+edited+' edited':'');
+  rows.slice(0,p.shown).forEach(i=>{const e=p.entries[i],el=document.createElement('div'),open=S.docs.find(d=>d.pack===p&&d.entry===e.name);
+    el.className='file'+(open&&open===S.cur?' on':'');el.dataset.i=i;
+    el.innerHTML=`<canvas width="64" height="64"></canvas><span>${esc(e.name.split('/').pop())}</span><em>${e.newData||(open&&open.dirty)?'edited':esc(shortDir(e.name.replace(/\/?[^\/]*$/,'')))}</em>`;
+    list.appendChild(el);thumbObs.observe(el)});
+  $('#pkMore').hidden=rows.length<=p.shown}
+async function openEntry(p,i){const e=p.entries[i];if(!e)return;const ex=S.docs.find(d=>d.pack===p&&d.entry===e.name);if(ex){switchDoc(ex);renderPackUI();return}
+  try{const bm=await createImageBitmap(new Blob([await readEntry(p,e)],{type:'image/png'}));
+    const c=document.createElement('canvas');c.width=bm.width;c.height=bm.height;const x=c.getContext('2d');x.drawImage(bm,0,0);
+    const d=mkDoc(e.name.split('/').pop(),0,0,x.getImageData(0,0,bm.width,bm.height));d.pack=p;d.entry=e.name;addDoc(d);renderPackUI()}
+  catch(err){toast('Could not open '+e.name+': '+(err.message||'unreadable'))}}
+$('#pkList').addEventListener('click',e=>{const c=e.target.closest('.file');if(c&&S.curPack)openEntry(S.curPack,+c.dataset.i)});
+$('#pkSel').onchange=e=>{S.curPack=S.packs.find(p=>p.id===+e.target.value)||null;renderPackUI()};
+$('#pkSearch').oninput=e=>{if(S.curPack){S.curPack.q=e.target.value;S.curPack.shown=120;renderPackUI()}};
+$('#pkDir').onchange=e=>{if(S.curPack){S.curPack.dir=e.target.value;S.curPack.shown=120;renderPackUI()}};
+$('#pkMore').onclick=()=>{if(S.curPack){S.curPack.shown+=120;renderPackUI()}};
+async function commitPack(p){fxPending();commitFloat();
+  for(const d of S.docs){if(d.pack!==p||!d.dirty)continue;const e=p.entries.find(x=>x.name===d.entry);if(!e)continue;
+    if(d===S.cur)sync(d);e.newData=await pngBytes(d.img);d.saved=cp(d.img);d.dirty=false;schedSave(d);p.edited=true}}
+async function writePack(p){
+  let blob,ok=true;try{blob=buildZip(p)}catch(e){toast(e.message||'Could not build the pack');return false}
+  if(p.handle){try{await writeHandle(p.handle,blob);ok='inplace'}catch(_){p.handle=null}}
+  if(ok!=='inplace')ok=await deliver(blob,p.name);
+  try{p.u8=new Uint8Array(await blob.arrayBuffer());p.entries=parseZip(p.u8);dbPutPack(p)}catch(_){}
+  if(ok)p.edited=false;return ok}
+async function savePackNow(p){if(!p)return;await commitPack(p);const ok=await writePack(p);updBar();renderPackUI();
+  toast(ok==='inplace'?'Saved into '+p.name:ok?'Pack saved as '+p.name:'Kept in the app. Download skipped.')}
+$('#pkSave').onclick=()=>savePackNow(S.curPack);
+$('#pkClose').onclick=()=>{const p=S.curPack;if(!p)return;
+  const doIt=()=>{S.docs.filter(d=>d.pack===p).forEach(d=>closeDoc(d));S.packs=S.packs.filter(x=>x!==p);dbDelPack(p.id);S.curPack=S.packs[0]||null;renderPackUI();updBar()};
+  if(p.edited||S.docs.some(d=>d.pack===p&&d.dirty))modal('Close pack?',`<p class="hint">${esc(p.name)} has edits that were not saved.</p>`,[{label:'Keep open'},{label:'Close anyway',cls:'primary',fn:()=>{doIt()}}]);else doIt()};
+
+/* saving (replaces the old save) */
+async function saveDoc(){const d=S.cur;if(!d)return;fxPending();commitFloat();refresh();
+  if(d.pack){const p=d.pack,e=p.entries.find(x=>x.name===d.entry);if(!e){toast('This texture is no longer in the pack');return}
+    e.newData=await pngBytes(d.img);d.saved=cp(d.img);d.dirty=false;schedSave(d);
+    const ok=await writePack(p);updBar();renderPackUI();
+    toast(ok==='inplace'?'Saved into '+p.name:ok?'Saved '+d.entry.split('/').pop()+' into '+p.name:'Kept in the app. Download skipped.');return}
+  d.name=pngName(d.name);const blob=await toBlob(d.img);let ok=true;
+  if(d.handle){try{await writeHandle(d.handle,blob);ok='inplace'}catch(_){d.handle=null}}
+  if(ok!=='inplace')ok=await deliver(blob,d.name);
+  d.saved=cp(d.img);d.dirty=false;updBar();schedSave(d);
+  toast(ok==='inplace'?'Saved over '+d.name:ok?'Saved '+d.name:'Saved in the app. Download skipped.')}
+['#bSave','#mSave'].forEach(i=>{$(i).onclick=saveDoc});
+
+/* tile view, compare, brush shape */
+$('#oTileV').onclick=()=>{S.tileV=!S.tileV;$('#oTileV').classList.toggle('on',S.tileV);if(S.tileV&&!S.wrap){S.wrap=true;$('#oTile').classList.add('on');toast('Tile view on. Wrap is on too, so edges connect.')}draw()};
+function setCompare(on){const d=S.cur;if(!d)return;
+  if(on){if(!d.saved){return}const c=document.createElement('canvas');c.width=d.saved.width;c.height=d.saved.height;c.getContext('2d').putImageData(d.saved,0,0);d.cmp=c}
+  S.compare=on;$('#oCmp').classList.toggle('on',on);draw()}
+const cmpB=$('#oCmp');cmpB.addEventListener('pointerdown',e=>{e.preventDefault();setCompare(true)});
+['pointerup','pointercancel','pointerleave'].forEach(n=>cmpB.addEventListener(n,()=>{if(S.compare)setCompare(false)}));
+$('#oShape').onchange=e=>{S.round=e.target.value==='rd';draw()};
+
+/* more effects */
+Object.assign(FX,{
+  bevel:d=>{const w=d.w,h=d.h,p=d.img.data;for(let y=0;y<h;y++)for(let x=0;x<w;x++){const i=(y*w+x)*4;if(!p[i+3])continue;let f=0;
+    if(y===0||x===0)f=.2;else if(y===h-1||x===w-1)f=-.2;if(!f)continue;for(let j=0;j<3;j++)p[i+j]=f>0?p[i+j]+(255-p[i+j])*f:p[i+j]*(1+f)}},
+  border:d=>{const w=d.w,h=d.h,p=d.img.data;for(let y=0;y<h;y++)for(let x=0;x<w;x++){if(x&&y&&x<w-1&&y<h-1)continue;const i=(y*w+x)*4;if(!p[i+3])continue;for(let j=0;j<3;j++)p[i+j]*=.6}},
+  poster:d=>{const p=d.img.data;for(let i=0;i<p.length;i+=4){p[i]=Math.round(p[i]/85)*85;p[i+1]=Math.round(p[i+1]/85)*85;p[i+2]=Math.round(p[i+2]/85)*85}},
+  tint:d=>{const c=curRGBA(),p=d.img.data;for(let i=0;i<p.length;i+=4){if(!p[i+3])continue;for(let j=0;j<3;j++)p[i+j]=p[i+j]*.78+c[j]*.22}}
+});
+
+/* palette as text */
+$('#palTxt').onclick=()=>{modal('Palette',`<p class="hint">One hex color per line (or separated by spaces). Copy this list to keep it, or paste your own colors and press Apply.</p><textarea id="palBox" rows="9" spellcheck="false"></textarea>`,
+  [{label:'Cancel'},{label:'Apply',cls:'primary',fn:()=>{const seen=new Set(),out=[];
+    String($('#palBox').value).split(/[\s,;]+/).forEach(t=>{const c=t&&parseHex(t);if(c){const h=toHex(c,true);if(!seen.has(h)){seen.add(h);out.push(h)}}});
+    S.pal=out.slice(0,200);savePal();updColorUI(true);toast(S.pal.length+' colors in palette')}}]);
+  $('#palBox').value=S.pal.join('\n')};
+
 /* ---------- startup ---------- */
 function rng(seed){return()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}}
 function sample(name,base,vari,seed){const d=mkDoc(name,16,16),r=rng(seed),p=d.img.data;
@@ -669,14 +865,14 @@ function sample(name,base,vari,seed){const d=mkDoc(name,16,16),r=rng(seed),p=d.i
   if(!Array.isArray(S.pal)||!S.pal.length)S.pal=DEFPAL.slice();
   try{const th=localStorage.getItem('tf.theme');if(th)document.documentElement.dataset.theme=th}catch(_){}
   setColor([123,192,67,255]);setTool('pencil');resize();new ResizeObserver(resize).observe(view);
-  await openDB();const recs=(await dbAll()).sort((a,b)=>a.id-b.id);
+  await openDB();await restorePacks();const recs=(await dbAll()).sort((a,b)=>a.id-b.id);
   for(const r of recs){try{const d=mkDoc(r.name,0,0,new ImageData(new Uint8ClampedArray(r.buf),r.w,r.h));d.id=r.id;uid=Math.max(uid,r.id+1);d.dirty=!!r.dirty;
-    d.saved=r.sbuf?new ImageData(new Uint8ClampedArray(r.sbuf),r.sw,r.sh):cp(d.img);S.docs.push(d)}catch(_){}}
+    d.saved=r.sbuf?new ImageData(new Uint8ClampedArray(r.sbuf),r.sw,r.sh):cp(d.img);if(r.packId){const pk=S.packs.find(p=>p.id===r.packId);if(pk){d.pack=pk;d.entry=r.entry}}S.docs.push(d)}catch(_){}}
   if(!S.docs.length){[sample('grass_top.png',[96,160,56],56,7),sample('dirt.png',[124,86,52],44,11),sample('stone.png',[128,128,128],40,3)].forEach(d=>{S.docs.push(d);d.saved=cp(d.img);dbPut(d)});
     setTimeout(()=>toast('Three example textures are loaded. Open your own images in Textures.'),600)}
   let first=S.docs[0];try{const id=+localStorage.getItem('tf.cur');first=S.docs.find(d=>d.id===id)||first}catch(_){}
-  if('launchQueue' in window){try{launchQueue.setConsumer(async p=>{const fs=[];for(const f of (p.files||[]))fs.push(await f.getFile());if(fs.length)openFiles(fs)})}catch(_){}}
-  switchDoc(first);updColorUI();queuePrev()})();
+  if('launchQueue' in window){try{launchQueue.setConsumer(async p=>{const fs=[];for(const hd of (p.files||[]))fs.push([await hd.getFile(),hd]);if(fs.length)openFiles(fs)})}catch(_){}}
+  switchDoc(first);updColorUI();renderPackUI();queuePrev()})();
 })();
 
 </script>
